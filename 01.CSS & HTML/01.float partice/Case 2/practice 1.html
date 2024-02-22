@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #all{
+            background-color: burlywood;
+            height: 600px;
+            width: 800px;
+        }
+        #top{
+            background-color: rgb(66, 213, 230);
+            height: 100px;
+            width: 800px;
+        }
+        #middle{
+            background-color: rgb(246, 255, 0);
+            height: 400px;
+            width: 800px;
+        }
+        #middle_right{
+            background-color: orange;
+            height: 400px;
+            width: 400px;
+            float:right;
+        }
+        #middle_left{
+            background-color: blueviolet;
+            height: 400px;
+            width: 400px;
+        }
+        #bottom{
+            background-color: rgba(21, 247, 21, 0.852);
+            height: 100px;
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <!-- #all>#top+(#middle>#left+#right)+#bottom -->
+    <div id="all">
+        <div id="top"></div>
+        <div id="middle">
+            <div id="middle_right"></div>
+            <div id="middle_left"></div>
+        </div>          
+        <div id="bottom"></div>
+    </div>
+</body>
+</html>
