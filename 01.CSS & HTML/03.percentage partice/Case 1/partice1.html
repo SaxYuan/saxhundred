@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #Box-all{
+            width: 80%;
+            height: 740px;
+            background-color: gray;
+            padding: 10px;
+        }
+        #Box1{
+            background: red;
+            width: 33%;
+            height: 740px;
+            float: left;
+            margin-right: 10px;
+        }
+        #Box2{
+            background: blue;
+            width:  calc(34% - 10px *2);
+            height: 740px;
+            float: left;
+            margin-right: 10px;
+        }
+        #Box3{
+            background: yellow;
+            width: 33%;
+            height: 740px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="Box-all">
+        <div id="Box1"></div>
+        <div id="Box2"></div>
+        <div id="Box3"></div>
+    </div>
+</body>
+</html>

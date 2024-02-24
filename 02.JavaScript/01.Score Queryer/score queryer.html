@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成績計算機</title>
+</head>
+
+<body>
+    <h1>成績計算機</h1>
+    <p>
+        國文:<span class="txt chi-txt"></span><input class="chi" type="number" min="0" max="100" value="80">
+    </p>
+    <p>
+        英文:<span class="txt eng-txt"></span><input class="eng" type="number" min="0" max="100" value="80">
+    </p>
+    <p>
+        數學:<span class="txt math-txt"></span><input class="math" type="number" min="0" max="100" value="80">
+    </p>
+
+    <button><span class="btn clear">清空</span></button>
+    <button><span class="btn clalc">計算</span></button>
+
+    <div>
+        平均:<span class="avg"></span>
+    </div>
+    <div>
+        結果:<span class="result"></span>
+    </div>
+    <div>
+        等級:<span class="rank"></span>
+    </div>
+
+    <script>
+        // 會忘記'='
+        let chi = document.querySelector('.chi')
+        let eng = document.querySelector('.eng')
+        let math = document.querySelector('.math')
+        let clearBtn = document.querySelector('.clear')
+        let clalc = document.querySelector('.clalc')
+        let avg = document.querySelector('.avg')
+        let result = document.querySelector('.result')
+        let rank = document.querySelector('.rank')
+
+        clalc.addEventListener('click', function () {
+            if (chi.value === '') {
+                alert('請輸入國文成績');
+                return;
+            } else if (eng.value === '') {
+                alert('請輸入英文成績');
+                return;
+            } else if (math.value === '') {
+                alert('請輸入數學成績');
+                return;
+            }
+
+        // 最後一層用else會顯示錯誤
+
+            let avgScore = ((chi.value * 1 + eng.value * 1 + math.value * 1) / 3);
+            avg.innerHTML = avgScore.toFixed(2);
+        // sum.innerHTML = avg;
+
+            if (avgScore > 60) {
+                result.innerHTML = '及格';
+            } else {
+                result.innerHTML = '不及格';
+            }
+
+        // let gradeText = '';
+        // 有沒有這個有影響嗎
+            if (avgScore == 100) {
+                rank.innerHTML = 'A';
+            } else if (avgScore >= 90) {
+                rank.innerHTML = 'B';
+            } else if (avgScore >= 80) {
+                rank.innerHTML = 'C';
+            } else if (avgScore >= 70) {
+                rank.innerHTML = 'D';
+            } else if (avgScore >= 60) {
+                rank.innerHTML = 'E';
+            } else {
+                rank.innerHTML = 'F';
+            }
+        })
+
+        clearBtn.addEventListener('click', function () {
+            chi.value = ""
+            eng.value = ""
+            math.value = ""
+            avg.innerHTML = ""
+            result.innerHTML = ""
+            rank.innerHTML = ""
+        })
+    </script>
+</body>
+
+</html>
+
+
+<!-- 
+解題思路
+一、題目需求：做一個成績計算機
+-1.輸入國文、英文、數學的分數後，能計算三科的平均值
+-2.以計算出來的平均值為依據，判斷是否及格，並給予相對應的評級
+-3.能清空已經輸入的欄位，供下一位學生進行計算
+
+二、對應需求的方法
+[HTML]
+1.國文、英文、數學使用input，以便輸入成績數值(只能輸入數字，最高100、最低0)
+2.計算、清空功能用button
+3.平均、及格、評級分別使用diV排列
+4.各別給予相對應的class，以利CSS設計與JS設定時使用
+
+//函數、元素怎麼分?
+
+[JavaScript]
+1.宣告(let)某個變數並賦予相對應的值，其值為document.querySelector()從html中找出的值(國文、英文、數學、計算按鈕、清空按鈕、平均欄位、結果欄位(及格與否)、評級欄位)
+
+2.對於'計算'按鈕，使用addEventListener函數，讓該按鈕在被點選(click)時，能夠將國文、英文、數學三科的值(value)總和後平均(取至小數點後第二位)，並回傳在網頁中的'平均'欄位
+
+//function的意義?
+
+2-1.計算出平均值後，依據平均值判斷是否及格(if)，60分以上(>=)顯示'及格'，60分以下(<)顯示'不及格'，並回傳在網頁(innerHTML)中的'結果'欄位
+
+2-2.依據平均值給予評級(if)
+100分(=))評級為A
+90分以上(>=)評級為B、
+80分以上(>=)評級為C、
+70分以上(>=)評級為D、
+60分以上(>=)評級為E、
+未滿60分(<)評級為F
+
+3.對於'清空'按鈕，使用addEventListener函數，讓該按鈕在被點選(click)時，將國文、英文、數學三科的值清空('')，並將平均、結果、評級欄位的回傳至網頁(innerHTML)的內容清空('')
+ -->

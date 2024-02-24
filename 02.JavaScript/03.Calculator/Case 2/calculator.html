@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡易計算機</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: lightgoldenrodyellow;
+            margin: auto;
+            padding: 10% 20%;
+        }
+
+        .box-all {
+            width: 50%;
+            height: 100%;
+            /* margin-bottom: 20px; */
+            border: 2px solid black;
+            padding: 20px 30px;
+            border-radius: 10%;
+        }
+
+        h1{
+            text-align: center;
+        } 
+        
+        .num {
+            width: 60%;
+            height: 30px;
+            text-align: left;
+            font-size: 22px;
+        }
+
+        .numTxt,
+        .resultTxt {
+            font-size: 24px;
+            line-height: 60px;
+            font-weight: 600;
+
+        }
+
+        button {
+            width: 110px;
+            margin: 10px 20px 10px 0;
+            font-size: 18px;
+            border-radius: 10%;
+            border: 1px solid black;
+
+            &:hover {
+                cursor: pointer;
+                background-color: lightgreen;
+                font-weight: 800;
+            }
+        }
+
+        .btnB {
+            width: 90px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <div class="box-all">
+        <h1 class="title">簡易計算機</h1>
+        <p>
+            <span class="numTxt">數值1 </span><input class="num num1" type="number" min="0" placeholder="請輸入任意數值">
+        </p>
+        <p>
+            <button class="btn btn1">加</button>
+            <button class="btn btn2">減</button>
+            <button class="btn btn2a">減-對調</button>
+            <button class="btn btn3">乘</button>
+            <button class="btn btn4">除</button>
+            <button class="btn btn4a">除-對調</button>
+        </p>
+        <p>
+            <span class="numTxt">數值2 </span><input class="num num2" type="number" min="0" placeholder="請輸入不為0的數值">
+        </p>
+        <div class="resultTxt">計算結果= <span class="result"></span></div>
+        <p>
+            <!-- <button class="btnB computeBtn">計算</button> -->
+            <button class="btnB clearBtn">重置</button>
+        </p>
+    </div>
+
+
+    <script>
+        let num1 = document.querySelector('.num1');
+        let num2 = document.querySelector('.num2');
+
+        let btn1 = document.querySelector('.btn1');
+        let btn2 = document.querySelector('.btn2');
+        let btn2a = document.querySelector('.btn2a');
+        let btn3 = document.querySelector('.btn3');
+        let btn4 = document.querySelector('.btn4');
+        let btn4a = document.querySelector('.btn4a');
+
+        // let computeBtn = document.querySelector('.computeBtn');
+        let result = document.querySelector('.result');
+        let clearBtn = document.querySelector('.clearBtn');
+
+
+        clearBtn.addEventListener('click', function () {
+            console.log(num1.value);
+            console.log(num2.value);
+            num1.value = '';
+            num2.value = '';
+
+            result.innerHTML = '';
+        });
+
+        btn1.addEventListener('click', function () {
+            let resultScore = (num1.value * 1 + num2.value * 1);
+            console.log(resultScore);
+            result.innerHTML = resultScore;
+
+        });
+
+        btn2.addEventListener('click', function () {
+            let resultScore = (num1.value * 1 - num2.value * 1);
+            console.log(resultScore);
+            result.innerHTML = resultScore;
+        });
+        btn2a.addEventListener('click', function () {
+            let resultScoreR = (num2.value * 1 - num1.value * 1);
+            console.log(resultScoreR);
+            result.innerHTML = resultScoreR;
+        });
+        btn3.addEventListener('click', function () {
+            let resultScore = ((num1.value * 1) * (num2.value * 1));
+            console.log(resultScore);
+            result.innerHTML = resultScore;
+        });
+        btn4.addEventListener('click', function () {
+            let resultScore = ((num1.value * 1) / (num2.value * 1));
+            console.log(resultScore);
+            result.innerHTML = resultScore.toFixed(2);
+        });
+        btn4a.addEventListener('click', function () {
+            let resultScoreR = ((num2.value * 1) / (num1.value * 1));
+            console.log(resultScoreR);
+            result.innerHTML = resultScoreR.toFixed(2);           
+        });
+
+
+    </script>
+
+</body>
+
+</html>

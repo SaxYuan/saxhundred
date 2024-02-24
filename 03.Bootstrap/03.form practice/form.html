@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <style>
+        body {
+            box-sizing: border-box;
+            background-image: url(./img/1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+
+        .img-map {
+            position: absolute;
+        }
+
+        .all-form {
+            width: 400px;
+            background-color: rgba(0, 0, 0, .5);
+            color: aliceblue;
+            position: relative;
+            left: calc(100% - 450px);
+            top: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-full">
+
+        <form class="all-form row needs-validation was-validated d-inline-block p-3">
+            <h4>Feedback</h4>
+            <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque porro, molestias adipisci
+                repudiandae minima voluptatibus!</p>
+            <hr>
+            <div class="col-12 ">
+                <label for="validationServer01" class="form-label fs-5">Email</label>
+                <input type="email" class="form-control " id="validationServer01" value=""
+                    placeholder="name@example.com" required>
+                <div class="invalid-tooltip">
+                    Remember includ "@".
+                </div>
+            </div>
+            <div class="col-12 mt-1">
+                <label for="validationServer02" class="form-label fs-5 mt-2">Message</label>
+
+                <textarea class="form-control" id="validationServer02" rows="2" placeholder="請輸入內容" required></textarea>
+                <div class="invalid-tooltip">
+                    Remember text message.
+                </div>
+            </div>
+
+            <div class="col-12 mt-2">
+                <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

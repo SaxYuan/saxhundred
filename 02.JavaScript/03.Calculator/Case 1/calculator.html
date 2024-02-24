@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>計算機</title>
+</head>
+
+<body>
+    <h2>計算機</h2>
+    <p>
+        <span class="num1-txt">數值1</span><input class="num1" type="number" value="30">
+    </p>
+    <p>
+        <span class="num2-txt">數值2</span><input class="num2" type="number" value="80">
+    </p>
+    <button class="plus">加</button>
+    <button class="minus">減</button>
+    <button class="multi">乘</button>
+    <button class="divide">除</button>
+    <button class="clear">清空</button>
+    <p>
+        計算結果=<span class="result"></span>
+    </p>
+
+    <script>
+        let num1 = document.querySelector('.num1');
+        let num2 = document.querySelector('.num2');
+
+        let plusBtn = document.querySelector('.plus');
+        let minusBtn = document.querySelector('.minus');
+        let multiBtn = document.querySelector('.multi');
+        let divideBtn = document.querySelector('.divide');
+
+        let clearBtn = document.querySelector('.clear');
+        let result = document.querySelector('.result');
+
+        plusBtn.addEventListener('click', function () {
+            if (num1.value === '') {
+                alert('請輸入數值1')
+            } else if (num2.value === '') {
+                alert('請輸入數值2')
+            } else {
+                let plusSum = (num1.value * 1 + num2.value * 1);
+                result.innerHTML = plusSum;
+            }
+        })
+
+        minusBtn.addEventListener('click', function () {
+            if (num1.value === '') {
+                alert('請輸入數值1')
+            } else if (num2.value === '') {
+                alert('請輸入數值2')
+            } else {
+                let minusSum = (num1.value * 1 - num2.value * 1);
+                result.innerHTML = minusSum;
+            }
+        })
+
+        divideBtn.addEventListener('click', function () {
+            if (num1.value === '') {
+                alert('請輸入數值1')
+            } else if (num2.value === '') {
+                alert('請輸入數值2')
+            } else {
+                let dividSum = (num1.value * 1) / (num2.value * 1);
+                result.innerHTML = dividSum.toFixed(2);
+            }
+        })
+
+        multiBtn.addEventListener('click', function () {
+            check(num1.value, num2.value);
+            // if (num1.value === '') {
+            //     alert('請輸入數值1')
+            // } else if (num2.value === '') {
+            //     alert('請輸入數值2')
+            // } else {
+                let multiSum = (num1.value * 1) * (num2.value * 1);
+                result.innerHTML = multiSum;
+            // }
+        })
+
+        clearBtn.addEventListener('click', function () {
+            num1.value='';
+            num2.value='';
+            result.innerHTML = '';
+        })
+    //if有沒有不要重複的寫法
+        function check (num1, num2) {
+            if (num1 === '') {
+                alert('請輸入數值1')
+            } else if (num2 === '') {
+                alert('請輸入數值2')
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+
+<!-- 
+解題思路
+一、題目需求：做一個簡易計算機
+-1.分別輸入數值1、數值2
+-2.依據點選應的運算子（＋－＊／）進行運算，並將運算結果顯示於'計算結果'欄位
+-3.能清空已經輸入的欄位，以利進行下一次運算
+-4.若數值1、數值2未輸入任何數字，則需跳出提醒
+
+二、對應需求的方法
+[HTML]
+1.數值1、數值2使用input（只能輸入數字，無其他限制)
+2.'運算子(＋－＊／)'及'清空'使用button
+3.計算結果使用diV排列
+4.各別給予相對應的class，以利CSS設計與JS設定時使用
+
+[JavaScript]
+1.宣告(let)某個變數並賦予相對應的值，其值為document.querySelector()從html中找出的值(數值1、數值2、＋、－、＊、／、清空按鈕、計算結果)
+
+2.對於'運算子'按鈕，使用addEventListener函數，讓按鈕被點選(click)時，能夠將數值1與數值2的值(value)，依照所點選的運算子進行運算(有餘數可能者，四捨五入取至小數點後第二位)，並回傳值在網頁中的'計算結果'欄位
+
+2-1.點選'運算子'按鈕時，應判斷(if)數值1、數值2欄位是否有輸入值，若有則依點選的按鈕進行運算，若無則跳出提示通知，待兩個欄位皆有輸入數值後，再依照點選的按鈕進行運算
+
+3.對於'清空'按鈕，使用addEventListener函數，讓該按鈕在被點選(click)時，將數值1、數值2的值清空('')，並將計算結果欄位的回傳至網頁(innerHTML)的內容清空('')
+-->

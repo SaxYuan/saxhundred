@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #all{
+            background-color: burlywood;
+            height: 700px;
+            width: 800px;
+        }
+        #top{
+            background-color: rgb(66, 213, 230);
+            height: 100px;
+            width: 800px;
+        }
+        #middle{
+            background-color: rgb(246, 255, 0);
+            height: 500px;
+            width: 800px;
+        }
+        #middle-left{
+            background-color: rgb(19, 214, 64);
+            height: 500px;
+            width: 700px;
+        }
+        #middle-left-Top{
+            background-color: rgb(5, 133, 150);
+            height: 300px;
+            width: 700px;
+        }
+        
+        #middle-left-Top-L{
+            background-color: rgb(30, 111, 211);
+            height: 300px;
+            width: 100px;
+            float: left;
+        }
+        #middle-left0{
+            background-color: pink;
+            height: 300px;
+            width: 100px;
+        }
+        #middle-left-Top-R{
+            background-color: rgb(48, 60, 38);
+            height: 300px;
+            width: 600px;
+            float: right;
+        }
+        #middle-left1{
+            background-color: red;
+            height: 100px;
+            width: 600px;
+        }
+        #middle-left2{
+            background-color: orange;
+            height: 100px;
+            width: 600px;
+        }
+        #middle-left3{
+            background-color: yellow;
+            height: 100px;
+            width: 600px;
+        }
+        #middle-left-Btm{
+            background-color: rgb(220, 15, 182);
+            height: 200px;
+            width: 700px;
+        }
+        #middle-left4{
+            background-color: rgb(165, 214, 19);
+            height: 100px;
+            width: 700px;
+        }
+        #middle-left5{
+            background-color: blue;
+            height: 100px;
+            width: 700px;
+        }
+        #middle-right{
+            background-color: rgb(227, 150, 175);
+            height: 500px;
+            width: 100px;
+            float: right;            
+        }
+        #bottom{
+            background-color: rgba(21, 247, 21, 0.852);
+            height: 100px;
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <!-- #all>#top+(#middle>#left+#right)+#bottom -->
+    <div id="all">
+        <div id="top"></div>
+        <div id="middle">
+            <div id="middle-right"></div>
+            <div id="middle-left">
+                <div id="middle-left-Top">
+                    <div id="middle-left-Top-L">
+                        <div id="middle-left0"></div>
+                    </div>
+                    <div id="middle-left-Top-R">
+                        <div id="middle-left1"></div>
+                        <div id="middle-left2"></div>
+                        <div id="middle-left3"></div>
+                    </div>
+                </div>
+                <div id="middle-left-Btm">
+                    <div id="middle-left4"></div>
+                    <div id="middle-left5"></div>
+                </div>  
+            </div>
+        </div>
+        <div id="bottom"></div>
+    </div>
+</body>
+</html>

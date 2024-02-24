@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .container {
+            height: 100%;
+            min-height: 100vh;
+            background-color: lightpink;
+            padding: 20px 100px 20px 150px;
+            font-family: '微軟正黑體';
+            background-color: rgba(0, 0, 0, .2);
+            background-blend-mode: multiply;
+            background-image: url(./img/1.webp);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .nav {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        @media (max-width: 850px) {
+            .nav {
+            margin-bottom: 10px;
+            }
+        }
+
+        .nav-btn {
+            height: 40px;
+            font-size: 24px;
+            border-radius: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+            background-color: transparent;
+            color: aliceblue;
+            backdrop-filter: brightness(70%);
+            text-shadow: 2px 2px black;
+            border: 1px solid black;
+
+            &:hover {
+                background-color: lightgoldenrodyellow;
+                color: black;
+                text-shadow: none;
+            }
+        }
+
+        @media (max-width: 540px) {
+            .nav-btn {
+                margin-right: 5px;
+                margin-bottom: 5px;
+                display: inline-block;
+            }
+        }
+
+        .time {
+            color: aliceblue;
+            font-size: 22px;
+            text-shadow: 2px 2px black;
+
+        }
+        @media (max-width: 1390px) {
+            .time {
+                font-size: 20px;
+                display: inline-block;
+                margin-top: 10px;
+            }
+        }
+        @media (max-width: 850px) {
+            .time {
+                font-size: 18px;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 780px) {
+            .time {
+                display: none;
+            }
+        }
+
+        .card-region {
+            display: flex;
+            justify-content: start;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            border: 1px solid white;
+            width: 20%;
+            height: 150px;
+            margin-right: 50px;
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            color: aliceblue;
+            backdrop-filter: brightness(70%);
+            text-shadow: 2px 2px black;
+        }
+
+        @media (max-width: 1390px) {
+            .card {
+                margin-right: 20px;
+                width: 30%;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .card {
+                margin-right: 20px;
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 660px) {
+            .card {
+                width: 100%;
+                margin-bottom: 10px;
+                /* padding: 0px; */
+
+            }
+        }
+
+        #city {
+            font-size: 28px;
+            font-weight: 10px;
+            line-height: 50px;
+        }
+
+        .info {
+            font-size: 22px;
+            line-height: 25px;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav">
+            <button class="nav-btn">全臺</button>
+            <button class="nav-btn">北部</button>
+            <button class="nav-btn">中部</button>
+            <button class="nav-btn">南部</button>
+            <button class="nav-btn">東部</button>
+            <button class="nav-btn">離島</button>
+            <span class="time"></span>
+        </div>
+        <div class="card-region">
+            <!-- <div class="card">A</div>
+                <div class="card">B</div>
+                <div class="card">C</div>
+                <div class="card">D</div> -->
+        </div>
+    </div>
+
+    <script>
+        let time = document.querySelector('.time');
+        let btnAll = document.querySelectorAll('.nav-btn');
+        let cities = [
+            ['基隆市', '新北市', '臺北市', '桃園市', '新竹市', '新竹縣', '苗栗縣', '臺中市', '南投縣', '彰化縣', '雲林縣', '嘉義市', '嘉義縣', '臺南市', '高雄市', '屏東縣', '宜蘭縣', '花蓮縣', '臺東縣', '澎湖縣', '金門縣', '連江縣'],
+            ['基隆市', '新北市', '臺北市', '桃園市', '新竹市', '新竹縣'],
+            ['苗栗縣', '臺中市', '南投縣', '彰化縣', '雲林縣'],
+            ['嘉義市', '嘉義縣', '臺南市', '高雄市', '屏東縣'],
+            ['宜蘭縣', '花蓮縣', '臺東縣'],
+            ['澎湖縣', '金門縣', '連江縣'],
+        ];
+
+        let nowCities = cities[0];
+        let orgData = {};
+
+        let url =
+            'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-0FAD15EC-3C0A-4AC6-B426-34FD9DD873FC';
+
+        //主程式
+        fetch_data();
+
+        btnAll.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                console.log(999, index);
+                nowCities = cities[index];
+                fetch_data();
+            });
+        });
+
+        function fetch_data() {
+            fetch(url)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (datas) {
+                    console.log(datas);
+                    // 1. 組織資料
+                    organizationData(datas);
+
+                    // 2. 處理城市
+                    arrangeCites();
+                });
+        }
+
+        function organizationData(data) {
+            // console.log(data.records.location);
+            let locationAll = data.records.location
+            console.log(locationAll);
+            locationAll.forEach(location => {
+                let locationName = location.locationName;
+                let loc_wE_t0 = location.weatherElement[0].time[0];
+                let wxCondition = loc_wE_t0.parameter.parameterName;
+                let startTime = loc_wE_t0.startTime;
+                let endTime = loc_wE_t0.endTime;
+                let maxT = location.weatherElement[4].time[0].parameter.parameterName;
+                let minT = location.weatherElement[2].time[0].parameter.parameterName;
+                let pop = location.weatherElement[1].time[0].parameter.parameterName;
+                let ci = location.weatherElement[3].time[0].parameter.parameterName;
+                console.log(maxT);
+                // 非常好而特別的方法
+                orgData[locationName] = {
+                    'wxCondition': wxCondition,
+                    startTime: startTime,
+                    endTime: endTime,
+                    maxT: maxT,
+                    minT: minT,
+                    pop: pop,
+                    ci: ci,
+                }
+                console.log(orgData);
+            });
+        }
+
+        function arrangeCites() {
+            let cardRegion = document.querySelector('.card-region');
+            cardRegion.innerHTML = '';
+            nowCities.forEach((city, index) => {
+                let cityData = orgData[city];
+                console.log(city, cityData);
+                cardRegion.innerHTML += `
+                
+                <div class="card">
+                    <div><span class="city" id="city"> ${city} </span></div>
+                    <div><span class="info city"> ${cityData.minT}°C - ${cityData.maxT}°C </span></div>
+                    <div><span class="info city"> 降雨機率:${cityData.pop}% </span></div>
+                    <div><span class="info city"> ${cityData.ci} </span></div>
+                </div>
+
+                `
+                time.innerHTML = '預報有效期間：' + cityData.startTime + ' 至 ' + cityData.endTime;
+            })
+        }
+    </script>
+</body>
+
+</html>
+<!-- 
+日期、時間拆分
+icon同步
+-->

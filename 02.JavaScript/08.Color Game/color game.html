@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            /* background-color: #f06060; */
+            width: 100%;
+            height: 100vh;
+            display: flex;
+
+        }
+
+        .box-big {
+            width: 520px;
+            height: 520px;
+            background-color: #d3d3d3;
+            margin: auto;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 10px;
+        }
+
+        .box {
+            width: 50%;
+            height: 50%;
+            background-color: aqua;
+            border: 5px solid #d3d3d3;
+            border-radius: 10px;
+        }
+
+        .answer {
+            opacity: 0.5;
+        }
+
+
+        .play-game {
+            display: none;
+        }
+
+        .continue-game {
+            display: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .start-game {
+            width: 100px;
+            height: 50px;
+            background-color: orangered;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="homepage">
+        <div class="logo"></div>
+        <button class="start-game">開始</button>
+        <button class="continue-game">繼續</button>
+
+    </div>
+    <div class="play-game">
+        <div id="demo-counter"><span>剩餘時間</span></div>
+        <div class="box-big"></div>
+        <button class="wait-game">暫停</button>
+        <button class="stop-game">停止</button>
+
+
+    </div>
+
+
+    <script>
+        let level = 2;
+        let size = 100 / level;
+        let boxBig = document.querySelector('.box-big')
+        let count = 0;
+
+        let homepage = document.querySelector('.homepage');
+        let playGame = document.querySelector('.play-game');
+        let startGame = document.querySelector('.start-game');
+        let waitGame = document.querySelector('.wait-game');
+        let continueGame = document.querySelector('.continue-game');
+        let stopGame = document.querySelector('.stop-game');
+
+        let demoCounter = document.querySelector('#demo-counter');
+        // let showCounter = document.querySelector('#show-counter');
+        // let stopShowCounter = document.querySelector('#stop-show-counter');
+        let counterInterval;
+        const totalTime = 5
+        let counter = totalTime;
+
+        myStarGame();
+        MyWaitGame();
+        MyContinueGame();
+        MyStopGame();
+        game()
+
+
+
+        function myStarGame() {
+            startGame.addEventListener('click', () => {
+                counter = totalTime;
+                demoCounter.innerHTML = counter;
+                homepage.classList.add('hidden');
+                playGame.classList.add('show');
+
+                counterInterval = setInterval(counterTimer, 1000);
+                game();
+            })
+        }
+
+        function MyWaitGame() {
+            waitGame.addEventListener('click', () => {
+                homepage.classList.remove('hidden');
+                playGame.classList.remove('show');
+                continueGame.classList.add('show');
+                counterStop();
+            })
+        }
+
+        function MyContinueGame() {
+            continueGame.addEventListener('click', () => {
+                homepage.classList.add('hidden');
+                playGame.classList.add('show');
+                counterInterval = setInterval(counterTimer, 1000)
+            })
+        }
+
+        function MyStopGame() {
+            stopGame.addEventListener('click', () => {
+                homepage.classList.remove('hidden');
+                playGame.classList.remove('show');
+                continueGame.classList.remove('show');
+                counterStop();
+            })
+        }
+
+        function counterTimer() {
+            if (counter > 0) {
+                console.log('show counter = ', counter);
+                demoCounter.innerHTML = --counter;
+            } else {
+                alert('時間到');
+                counterStop();
+                console.log('alert counter = ', counter);
+                homepage.classList.remove('hidden');
+                playGame.classList.remove('show');
+                continueGame.classList.remove('show');
+            }
+        }
+
+        function counterStop() {
+            clearInterval(counterInterval);
+        }
+
+        function game() {
+            boxBig.innerHTML = '';
+
+            let color =
+                `rgb(${Math.floor(Math.random() * 255) + 1},${Math.floor(Math.random() * 255) + 1},${Math.floor(Math.random() * 255) + 1})`;
+
+            for (let i = 0; i < level ** 2; i++) {
+                boxBig.innerHTML += `<div class="box" style="width:${size}%;height:${size}%;background-color:${color};">`;
+            }
+
+            let randomAnswer = Math.floor(Math.random() * level ** 2) + 1;
+            let answerBox = document.querySelector(`.box-big .box:nth-of-type(${randomAnswer})`);
+            answerBox.classList.add("answer");
+
+            answerBox.style.opacity = `${0.5 + level * 0.005}`;
+
+            let answerBtn = document.querySelector('.answer');
+            answerBox.addEventListener('click', function () {
+                count++;
+                if (count === level) {
+                    level++;
+                    size = 100 / level;
+                    count = 0;
+                }
+                game();
+            })
+        }
+
+    </script>
+</body>
+
+</html>
+
+<!-- 
+    【js思路】
+    一、需求
+    1.製作一個遊戲，此遊戲有以下頁面
+        (1)首頁:顯示遊戲名稱，並且有開始按紐、繼續按紐(點選暫停時跳轉回首頁時才會出現)
+        (2)遊戲頁:玩遊戲的頁面，有遊戲本體、計時器(計時器為倒數計時器，計時器不會因晉級下一關而重置)、暫停按鈕、停止按紐，點選停止按鈕時遊戲結束，並回到首頁
+    
+    2.遊戲本體說明
+    遊戲初始為2*2的色塊，玩家要從其中找出顏色不同的色塊，點擊正確色塊後進入下一關，色塊數會隨著遊戲進程而增加
+
+    
+    
+    二、思路
+    [CSS/HTML](必要)
+    1.遊戲頁:遊戲本體、時間區塊、暫停按鈕、停止按鈕
+    2.首頁:標題、開始按鈕、繼續按紐
+
+    
+    [JavaScript]
+    1.宣告(let + document.querySelector || querySelectorAll):
+        (1)HTML的結構:首頁、遊戲頁、遊戲本體、時間區塊、開始按鈕、暫停按鈕、停止按鈕、繼續按紐
+        (2)其他:遊戲等級、方塊尺寸、過關數
+        
+    2.遊戲本體
+        (1)設定遊戲function
+            A.清空遊戲本體
+            B.用亂數設定遊戲色塊顏色
+                *因rgb需有三個參數值，故需有三個亂數
+            C.設定遊戲等級(for迴圈)
+                (a)色塊的長寬會依照變數(方塊尺寸)改變
+                (b)背景色依照色塊顏色改變
+            D.設定答案方塊
+                (a)宣告變數(答案方塊)，將亂數取地板數後，乘以遊戲等級的平方，再加1(得出最小值4)
+                (b)宣告答案色塊，資料來源為遊戲色塊，讓其中一塊設定與其他不同
+            E.增加遊戲難度，將答案方塊的透明度會隨著等級有些微調整
+            
+        (2)設定監聽事件(.addEventListener)
+            A.當答案方塊被點擊時(代表通關)，將關卡數+1
+            B.判斷過關數跟遊戲等級的數值，若兩者相等，則提高遊戲等級，等級提高色塊尺寸就會變小，然後將過關數重新計算
+            C.呼叫遊戲function
+
+    3.「開始遊戲」按鈕
+        (1)function設計
+            A.設定監聽事件(.addEventListener)
+
+
+        
+    三、做後筆記
+    
+
+-->

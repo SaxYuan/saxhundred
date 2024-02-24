@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            background-position: center;
+            background-size: cover;
+
+            &:hover {
+                background-color: lightgray;
+
+            }
+        }
+
+        button.scissors {
+            background-image: url(./img/剪刀.png);
+        }
+
+        button.rock {
+            background-image: url(./img/石頭.png);
+        }
+
+        button.paper {
+            background-image: url(./img/布.png);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div><span>你的選擇</span></div>
+    <button class="scissors" value="0"></button>
+    <button class="rock" value="1"></button>
+    <button class="paper" value="2"></button>
+
+    <div>
+        電腦出<span class="txt com-player"></span>
+    </div>
+    <div>
+        結果：<span class="txt result"></span>
+    </div>
+
+    <script>
+        let scissorsBtn = document.querySelector('.scissors');
+        let rockBtn = document.querySelector('.rock');
+        let paperBtn = document.querySelector('.paper');
+        let comPlayer = document.querySelector('.com-player');
+        let result = document.querySelector('.result');
+
+        scissorsBtn.addEventListener('click', function (){
+            
+            let comPlayerResult = Math.floor(Math.random() * 3);
+            comPlayer.innerHTML = comPlayerResult;
+
+            if (comPlayerResult === 0) {
+                comPlayer.innerHTML = '剪刀';
+                result.innerHTML = '平手';
+            }
+            else if (comPlayerResult === 1) {
+                comPlayer.innerHTML = '石頭';
+                result.innerHTML = '玩家輸了';
+            }
+            else if (comPlayerResult === 2) {
+                comPlayer.innerHTML = '布';
+                result.innerHTML = '玩家贏了';
+            }
+        })
+        rockBtn.addEventListener('click', function (){
+            
+            let comPlayerResult = Math.floor(Math.random() * 3);
+            comPlayer.innerHTML = comPlayerResult;
+
+            if (comPlayerResult === 0) {
+                comPlayer.innerHTML = '剪刀';
+                result.innerHTML = '玩家贏了';
+            }
+            else if (comPlayerResult === 1) {
+                comPlayer.innerHTML = '石頭';
+                result.innerHTML = '平手';
+            }
+            else if (comPlayerResult === 2) {
+                comPlayer.innerHTML = '布';
+                result.innerHTML = '玩家輸了';
+            }
+        })
+        paperBtn.addEventListener('click', function (){
+            
+            let comPlayerResult = Math.floor(Math.random() * 3);
+            comPlayer.innerHTML = comPlayerResult;
+
+            if (comPlayerResult === 0) {
+                comPlayer.innerHTML = '剪刀';
+                result.innerHTML = '玩家輸了';
+            }
+            else if (comPlayerResult === 1) {
+                comPlayer.innerHTML = '石頭';
+                result.innerHTML = '玩家贏了';
+            }
+            else if (comPlayerResult === 2) {
+                comPlayer.innerHTML = '布';
+                result.innerHTML = '平手';
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>兵役檢查</title>
+</head>
+
+<body>
+    <h2>兵役查詢</h2>
+    <p>
+        <span>姓名:</span>
+        <input class="name" type="text" name="name">
+    </p>
+    <p>
+        <span>性別:</span>
+        <label for="male">男<input id="male" class="sex" type="radio" name="gender" value="0"></label>
+        <label for="female">女<input id="female" class="sex" type="radio" name="gender" value="1"></label>
+    </p>
+    <div>年齡:
+        <select class="age">
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+        </select>
+    </div>
+    <p>
+        <button class="query">
+            查詢
+        </button>
+    </p>
+    <div>
+        結果<span class="result"></span>
+    </div>
+
+    <script>
+        let queryBtn = document.querySelector('.query')
+        let sex = document.querySelectorAll('.sex')
+        let age = document.querySelector('.age')
+        let result = document.querySelector('.result')
+
+        queryBtn.addEventListener('click', function () {
+            // let sexValue = sex.value;
+            let ageValue = age.value;
+
+            if (sex[1].checked == true && ageValue > 18) {
+                result.innerHTML = '女性免服兵役'
+                console.log('女性免服兵役');
+            } else {
+                console.log(sexValue, ageValue);
+            }
+
+    
+
+
+        })
+
+    </script>
+</body>
+
+</html>
+
+<!-- 
+解題思路
+一、題目需求：做一個兵役查詢系統
+-1.需要輸入查詢者姓名
+-2.需要選擇性別(男或女)
+-3.需要選擇年齡
+-4.點選查詢按鈕後，顯示結果
+-5.結果：女性不用服兵役、男性18歲以上要服兵役、男性18歲以下不用服兵役
+
+二、對應需求的方法
+[HTML]
+1.姓名使用input（類型:text）
+2.性別使用imput（類型:radio，且只能選取一個(name:gender)），而且點選男或女的文字時，文字相對應的框也要能被選取(label)
+3.年齡使用input（類型:XXX list XXX） //應為select-option
+4.查詢按鈕使用button
+5.結果欄位使用div
+
+[JavaScript]
+1.宣告(let)某個變數並賦予相對應的值，其值為document.querySelector()從html中找出的值(性別、年齡、查詢、結果欄位)
+
+2.依照性別、年齡判斷(if)是否需服兵役，並在點選'查詢'按鈕時（使用addEventListener函數），將結果回傳至網頁(innerHTML)中的'結果'欄位。
+ -->

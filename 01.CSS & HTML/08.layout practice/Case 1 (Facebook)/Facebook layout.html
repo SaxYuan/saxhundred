@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            background-color: white;
+            height: 600px;
+            margin: 0;
+        }
+        #nav{
+            background-color: #fffffd;
+            width: 100%;
+            height: 60px;
+            position: fixed;
+            z-index: 1;
+        }
+        #fb-logo{
+            position: absolute;
+            top: 9px;
+            left: 15px;        
+            display: inline;
+            z-index: 2;
+        }
+        #nav-search-logo{
+            background-image: url(./img/svgexport-3.svg);
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 13px;
+            left: 16px;
+            height: 25px;
+            width: 25px;
+            display: inline;                   
+        }
+        #nav-search{
+            background-color: whitesmoke;
+            height: 29px;
+            width: 280px;
+            border-radius:20px 20px 20px 20px;
+            position: absolute;
+            top: 8px;
+            left: 60px;
+            display: inline;
+            padding-top: 11px;
+            padding-left: 40px;
+        }
+        #home{
+            background-image: url(./img/svgexport-4.svg);
+            background-repeat: no-repeat;
+            height: 25px;
+            width: 25px;
+            position: absolute;
+            top: 10px;
+            left: 450px;
+        }
+        #fans{
+            background-image: url(./img/svgexport-5.svg);
+            background-repeat: no-repeat;
+            height: 25px;
+            width: 25px;
+            position: absolute;
+            top: 10px;
+            left: 570px;
+        }
+        #reel{
+            background-image: url(./img/svgexport-6.svg);
+            background-repeat: no-repeat;
+            height: 25px;
+            width: 25px;
+            position: absolute;
+            top: 10px;
+            left: 690px;
+        }
+        #shop{
+            background-image: url(./img/svgexport-7.svg);
+            background-repeat: no-repeat;
+            height: 25px;
+            width: 25px;
+            position: absolute;
+            top: 10px;
+            left: 810px;
+        }
+        #club{
+            background-image: url(./img/svgexport-8.svg);
+            background-repeat: no-repeat;
+            height: 25px;
+            width: 25px;
+            position: absolute;
+            top: 10px;
+            left: 930px;
+        }
+        #function{
+            background-image: url(./img/svgexport-13.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 5px;
+            left: 1260px;
+            background-color: rgb(233, 233, 233);
+            border-radius: 45%;
+            height: 40px;
+            width: 40px;
+        }
+        #messenger{
+            background-image: url(./img/svgexport-12.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 5px;
+            left: 1310px;
+            background-color: rgb(233, 233, 233);
+            border-radius: 45%;
+            height: 40px;
+            width: 40px;            
+        }
+        #bell{
+            background-image: url(./img/svgexport-11.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 5px;
+            left: 1360px;
+            background-color: rgb(233, 233, 233);
+            border-radius: 45%;
+            height: 40px;
+            width: 40px;
+        }
+        #photoS{
+            background-image: url(./img/main.png);
+            background-position: center;
+            background-size: 30px;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 5px;
+            left: 1410px;
+            background-color: white;
+            border-radius: 45%;
+            height: 40px;
+            width: 40px;
+        }
+        #all{
+            /* background-color: rgb(41, 209, 75); */
+            width: 80%;
+            height: 600px;
+            margin: auto;
+            padding-top: 60px;
+        }        
+        #name{
+            color: black;
+            font-size: 40px;
+            position: relative;
+            top: 460PX;
+            left: 310px;           
+        }
+        #friend{
+            color: black;
+            font-size: 20px;
+            position: relative;
+            top: 460PX;
+            left: 320px;
+        }
+        #poster{
+            background-color: rgb(0, 72, 255);
+            border-radius: 10px;
+            padding: 7px;
+            display: inline;
+            color: white;
+            font-size: 20px;
+            position: relative;
+            top: 430PX;
+            left: 820px;
+        }
+        #edit{
+            background-color: rgb(228, 225, 225);
+            border-radius: 10px;
+            padding: 7px;
+            display: inline;
+            color: black;
+            font-size: 20px;
+            position: relative;
+            top: 430PX;
+            left: 830px;
+        }
+        #more{
+            /* background-image: url(./img/svgexport-25.svg); */
+            background-color: rgb(228, 225, 225);
+            border-radius: 10px;
+            /* width: 30px; */
+            /* height: 40px; */
+            font-size: 30px;
+            display: inline;
+            /* background-repeat: no-repeat; */
+            position: relative;
+            top: 432PX;
+            left: 840px;
+        }
+        #banner{
+            background-image: url(./img/ilya-pavlov-OqtafYT5kTw-unsplash.jpg);
+            background-color: aqua;
+            width: 100%;
+            height: 450px;
+            /* background-image: ; */
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        #photo{
+            background-color: rgb(255, 255, 255);
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            border-radius: 50%;
+            background-image: url(./img/main.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 150px ;
+            left: 100px;
+            bottom: -110px;
+        }
+        #photo-change{
+            background-color: rgb(228, 225, 225);
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            border-radius: 50%;
+            background-image: url(./img/camera-solid.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 40px ;
+            left: 260px;
+            bottom: -90px;
+        }
+        #button-Up{
+            background-color: gray;
+            position: absolute;
+            right: 50px;
+            bottom: 50px;
+            width: 160px;
+            height: 25px;
+            margin-bottom: 5px;
+            color: white;
+            text-align:center;
+            padding-top: 5px;            
+        }
+        #button-Down{
+            background-color: gray;
+            position: absolute;
+            right: 57px;
+            bottom: 20px;
+            width: 140px;
+            height: 25px;
+            color: white;
+            text-align:center;
+            padding-top: 5px;
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+    <div id="nav">
+        <div id="fb-logo">
+            <img src="./img/svgexport-1.svg" alt="">
+        </div>
+        <div id="nav-search">搜尋Facebook
+            <div id="nav-search-logo">
+        </div>
+        <div id="home"></div>
+        <div id="fans"></div>
+        <div id="reel"></div>
+        <div id="shop"></div>
+        <div id="club"></div>
+        <div id="function"></div>
+        <div id="messenger"></div>
+        <div id="bell"></div>
+        <div id="photoS"></div>
+    </div>    
+    </div>
+    <div id="all">
+        <div id="banner">
+            <div id="button-Up">使用虛擬替身建立</div>
+            <div id="button-Down">編輯封面相片</div>
+            <div id="photo"></div>
+            <div id="photo-change"></div>
+            <div id="name">作部初來</div>
+            <div id="friend">0位朋友</div>
+            <div id="poster">＋新增到限時動態</div>
+            <div id="edit">／編輯個人檔案</div>
+            <div id="more">　v　</div>
+        </div>
+    </div>
+    <hr width="1300px">
+</body>
+</html>

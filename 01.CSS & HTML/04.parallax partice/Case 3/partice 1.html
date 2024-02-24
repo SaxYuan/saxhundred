@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        body{
+            margin: 0;
+            height: 300px;
+            padding: 0% 10%;
+        }
+        .nav{
+            /* background-color: lightskyblue; */
+            width: calc(80% - 10px * 2);
+            height: calc(100px - 10px * 2);
+            position: fixed;
+            z-index: 9;
+            padding: 10px;
+        }
+        .logo{
+            width: 80px;
+            height: 80px;
+            background-image: url(./img/3.jpg);
+            background-size: cover;
+            border-radius: 50%;
+            background-position: 10%;
+            float: left;
+        }
+        .logo:hover{
+            transform: rotate(30deg);
+        }
+        .nav-btn-all{
+            /* background-color: blueviolet; */
+            /* width: 300px; */
+            /* height: 80px; */
+            float: right;            
+        }
+        .nav-btn{
+            background-color: lightgoldenrodyellow;
+            width: 80px;
+            height: 50px;
+            float: left;
+            margin-left: 10px;
+            margin-top: 15px;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        .nav-btn-1:hover{
+            background-color:lightgreen;
+        }
+        .nav-btn-2:hover{
+            background-color:lightskyblue;
+        }
+        .nav-btn-3:hover{
+            background-color:lightsalmon;
+        }
+        .all{
+            /* background-color:blanchedalmond; */
+            width: 100%;
+            height: 100vh;
+            /* padding-top: 100px; */
+        }
+        .banner{
+            /* background-color: aquamarine; */
+            width: 100%;
+            height: 50vh;
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-attachment: fixed;
+            padding-top: 50vh;
+            position: relative;
+        }
+        #banner-1{
+            background-image: url(./img/n1.jpg);
+        }
+        #banner-2{
+            background-image: url(./img/n2.jpg);
+        }
+        #banner-3{
+            background-image: url(./img/n3.jpg);
+        }
+        .mask{
+            width: 100%;
+            height: 50vh;
+            background-color: black;
+            opacity: 30%;
+        }
+        .btn{
+            background-color: white;
+            width: 150px;
+            height: 60px;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 60px;
+            font-size: 24px;
+            position: absolute;
+            left: 50%;
+            top: 75%;
+            transform: translate(-50%, -50%);
+        }
+        .btn-1:hover{
+            background-color: aquamarine;
+        }
+        .btn-2:hover{
+            background-color: lightcoral;
+        }
+        .btn-3:hover{
+            background-color: lightskyblue;
+        }
+    </style>
+
+
+<body>
+    <div class="nav">
+        <div class="logo"></div>
+        <div class="nav-btn-all">
+            <a href="#banner-1" class="nav-btn nav-btn-1">A</a>
+            <a href="#banner-2" class="nav-btn nav-btn-2">B</a>
+            <a href="#banner-3" class="nav-btn nav-btn-3">C</a>
+        </div>
+    </div>
+    <div class="all">
+        <div id="banner-1" class="banner">
+            <div class="mask"></div>
+            <div class="btn btn-1">A</div>
+        </div>
+        <div id="banner-2" class="banner">
+            <div class="mask"></div>
+            <div class="btn btn-2">B</div>
+        </div>
+        <div id="banner-3" class="banner">
+            <div class="mask"></div>
+            <div class="btn btn-3">C</div>
+        </div>
+    </div>
+
+</body>
+</html>

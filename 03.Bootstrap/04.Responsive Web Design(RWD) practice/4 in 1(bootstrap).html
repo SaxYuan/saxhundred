@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>四合一Bootstrap版</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link href="./NEW.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <style>
+        /* 各斷點的參數 */
+        :root {
+            --bs-breakpoint-xs: 0;
+            --bs-breakpoint-sm: 576px;
+            --bs-breakpoint-md: 768px;
+            --bs-breakpoint-lg: 992px;
+            --bs-breakpoint-xl: 1200px;
+            --bs-breakpoint-xxl: 1400px;
+        }
+
+        /* 初始化 */
+        .container-fluid {
+            padding-right: 0 !important;
+            padding-left: 0 !important;
+            box-sizing: border-box;
+        }
+        /* 設定大小以顯示圖片 */
+        .img-content {
+            height: 100%;
+            width: 100%;
+        }
+        /* 手機版大小 */
+        @media (min-width:575px) {
+            .img-content {
+                width: 80%;
+                margin: auto;
+                padding: 100px 0;
+            }
+        }
+        /* 平板及電腦版大小 */
+        @media (min-width:1200px) {
+            .img-content {
+                width: 800px;
+                margin: auto;
+                padding: 100px 0;
+            }
+        }
+        /* 圖片初始設定 */
+        .my-img {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* 手機版圖片設定 */
+        @media (max-width:575px) {
+            .sm-img {
+                height: calc(100vh/3 - 98px/3) !important;
+            }
+        }
+        /* 平板版圖片設定 */
+        @media (min-width:575px) {
+            /* 上方一張圖的設定 */
+            .lg-img {
+                height: calc(100vh/3 - 98px/3) !important;
+            }
+            /* 下方兩張圖的設定 */
+            .lg-img-2 {
+                width: calc(50% - 4px);
+                display: inline-flex;
+                flex-wrap: nowrap;
+                justify-content: start;
+            }
+        }
+        /* 平板版圖片設定 */
+        @media (min-width:1200px) {
+            /* 上方一張圖的設定 */
+            .lg-img {
+                height: calc(100vh/3) !important
+            }
+            /* 下方兩張圖的設定 */
+            .lg-img-2 {
+                width: calc(50% - 8px);
+                display: inline-flex;
+                flex-wrap: nowrap;
+                justify-content: start
+            }
+        }
+        /* 電腦版圖片設定 */
+        @media (min-width:1400px) {
+            .xl-img {
+                height: 100% !important;
+                width: calc(100%/3 - 8px);
+                display: inline-flex;
+                flex-wrap: nowrap;
+                justify-content: start;
+            }
+        }
+
+        @media (max-width:575px) {
+            /* 在手機版時，讓漢堡條跟logo位置互換 */
+            .xs-nav-resv {
+                flex-direction: row-reverse;
+            }
+            /* 在手機版時，讓logo位置置中 */
+            .xs-logo-posi {
+                position: relative;
+                margin: auto;
+            }
+        }
+
+        @media (min-width:575px) {
+            /* sm版至xl版中間，讓按鈕列置右 */
+            .sm-btn-posi {
+                justify-content: end;
+            }
+        }
+
+        @media (min-width:1200px) {
+            /* 在1200時變成左右兩欄 */
+            .xl-container {
+                display: flex;
+            }
+
+            /* 讓右欄水平、垂直置中 */
+            .xl-content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* 設定nav高度、將logo與按鈕分行、將logo與按鈕靠上排列並水平置中 */
+            .xl-nav {
+                height: 100vh;
+                flex-wrap: wrap;
+                align-content: start;
+                justify-content: center;
+            }
+
+            /* 用logo的<a>將nav寬度撐開、將圖片置中並向下推 */
+            .xl-logo-size {
+                width: 366px;
+                display: flex;
+                justify-content: center;
+                margin-top: 100px;
+                margin-right: 0px;
+            }
+
+            /* 調整logo大小 */
+            .xl-logo {
+                width: 200px;
+                height: 150px;
+            }
+
+            /* 將按鈕置中，並與logo間有間距 */
+            .xl-btn-posi {
+                justify-content: center;
+                margin-top: 20px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container-fluid xl-container">
+
+        <!-- nav -->
+        <nav class="navbar navbar-expand-sm bg-body-secondary xs-nav-resv xl-nav">
+
+            <!-- logo -->
+            <a class="navbar-brand xs-logo-posi xl-logo-size" href="#">
+                <img src="./img/1.jpg" alt="Logo" width="85" height="70"
+                    class="d-inline-block align-text-top mx-3 xl-logo">
+            </a>
+
+            <!-- 漢堡條 -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- 按鈕區 -->
+            <div class="collapse navbar-collapse sm-btn-posi xl-btn-posi" id="navbarNavAltMarkup">
+                <div class="navbar-nav fs-2 fw-bolder mx-3 flex-xl-column text-xl-center">
+                    <a class="nav-link active " aria-current="page" href="https://www.google.com.tw" target="_blank">Google</a>
+                    <a class="nav-link active" href="https://tw.yahoo.com/" target="_blank">Yahoo</a>
+                    <a class="nav-link active" href="https://www.youtube.com/" target="_blank">YouTube</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- content -->
+        <div class="content container-fluid xl-img-content ">
+            <div class="img-content img-fluid">
+                <div style="background-image: url(./img/n1.jpg);"
+                    class="my-img sm-img lg-img mt-sm-2 mt-lg-2 mb-xl-0 xl-img me-xl-2 xl-img-2
+                    " width="100">
+                </div>
+                <div style="background-image: url(./img/n2.jpg);"
+                    class="my-img sm-img lg-img lg-img-2 me-lg-1 mt-sm-2 mt-lg-2 xl-img me-xl-2 ">
+                </div>
+                <div style="background-image: url(./img/n3.jpg);"
+                    class="my-img sm-img mt-sm-2 mt-lg-2 lg-img lg-img-2 xl-img">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

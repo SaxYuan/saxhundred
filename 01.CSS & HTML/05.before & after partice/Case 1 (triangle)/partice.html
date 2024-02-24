@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            margin-bottom: 10px;
+        }
+        .box1{
+            width: calc(200px - 100px * 2);
+            height: calc(200px - 100px * 2);
+            background-color: aqua;
+            border: 100px solid white;
+            border-top-color: black;
+            border-right-color: green;
+            border-bottom-color: blue;
+            border-left-color: yellow;
+        }
+        .box2{
+            background-color:aqua;
+            width: 500px;
+            height: 300px;
+            border-radius: 10%;
+            position: absolute;
+        }
+        .tra2{
+            width: calc(200px - 100px * 2);
+            height: calc(200px - 100px * 2);
+            /* background-color: transparent; */
+            border: 100px solid aqua;
+            border-top-color: black;
+            border-right-color: black;
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            position: absolute;
+            right:0;
+            transform: rotate(0deg);
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="box box1"></div>
+    <div class="box box2">
+        <div class="tra2"></div>
+    </div>
+     <div class="box box3">
+         <div class="tra3"></div>
+    </div>
+</body>
+</html>

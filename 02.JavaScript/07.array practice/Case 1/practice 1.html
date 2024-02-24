@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    姓名:<input type="text" class="name">
+    <button class="add">新增</button>
+    <button class="query">查詢</button>
+    <button class="del">刪除</button>
+    <div>結果<span class="result"></span></div>
+    <div>列表<span class="list"></span></div>
+
+    <script>
+        let name = document.querySelector('.name');
+        let addBtn = document.querySelector('.add');
+        let queryBtn = document.querySelector('.query');
+        let delBtn = document.querySelector('.del');
+        let result = document.querySelector('.result');
+        let list = document.querySelector('.list');
+        let myArr = [];
+
+        //
+        addBtn.addEventListener('click', function () {
+            if (!name.value) {
+                alert('請輸入姓名');
+                return;
+            }
+            else {
+                myArr.push(name.value);
+                result.innerHTML = name.value + '新增成功';
+                showAll();
+                name.value = '';
+            }
+        })
+
+        queryBtn.addEventListener('click', function () {
+            let nameData = myArr.indexOf(name.value);
+            if (nameData === -1) {
+                result.innerHTML = '查無此資料';
+                return;
+            }
+            else {
+                result.innerHTML = `${name.value}找到，在第${nameData + 1}筆`;
+                showAll();
+            }
+        })
+        delBtn.addEventListener('click', function () {
+            let nameData = myArr.indexOf(name.value);
+            if (nameData === -1) {
+                result.innerHTML = '查無此資料';
+                return;
+            }
+            else {
+                myArr.splice(nameData, 1)
+                result.innerHTML = `${name.value}已刪除`;
+                showAll();
+            }
+        })
+
+        function showAll(){
+            list.innerHTML = '';
+            myArr.forEach((item,index)=>{
+                list.innerHTML += `<br>${item}`;
+
+            })
+
+        }
+
+
+    </script>
+</body>
+
+</html>

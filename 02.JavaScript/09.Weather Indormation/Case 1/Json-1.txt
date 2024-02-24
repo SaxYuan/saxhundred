@@ -1,0 +1,5 @@
+"palyer":[
+  {"name":"John", "nikeName":"Doe"},
+  {"name":"Anna", "nikeName":"Smith"},
+  {"name":"Peter", "nikeName":"Jones"}
+]

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="start">開始</button>
+    <div>
+        結果:<span class="result"></span>
+    </div>
+
+    <Script>
+        let startBtn = document.querySelector('.start');
+        let result = document.querySelector('.result');
+
+        startBtn.addEventListener('click', function () {
+            let dice1 = 0;
+            let dice2 = 1;
+            let dice3 = 2;
+            let count = 0;
+            result.innerHTML = '';
+
+            while (!(dice1 === dice2 && dice2 === dice3)) {
+                count++;
+                dice1 = Math.floor(Math.random() * 6 + 1);
+                dice2 = Math.floor(Math.random() * 6 + 1);
+                dice3 = Math.floor(Math.random() * 6 + 1);
+                result.innerHTML += `<br>第${count}次 => ${dice1},${dice2},${dice3}`
+            }
+        })
+
+
+
+    </Script>
+</body>
+
+</html>
