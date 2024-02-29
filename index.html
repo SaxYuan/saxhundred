@@ -1,1 +1,75 @@
-123test
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品及首頁</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+    .container{
+      padding: 50px 150px;
+    }
+    .sub {
+      font-size: 46px;
+      background-color: lightpink;
+    }
+    .img-all {
+      background-color: lightgoldenrodyellow;
+    }
+    img {
+      height: 200px;
+      border: 1px solid black;
+    }
+    .HC-img,
+    .JS-img{
+      &:hover{
+        background-color: #FFFFB9;
+        cursor: pointer;
+      }
+      &:active{
+        background-color: #FFE66F;
+      }
+    }
+    .hidden{
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>作品集</h1>
+    <div class="">
+      <img src="./index-img/HC.png" alt="" class="HC-img">
+      <img src="./index-img/JS750.png" alt="" class="JS-img">
+      
+    </div>
+  </div>
+</body>
+  <script>
+    let HCImg = document.querySelector('.HC-img');
+    let JSImg = document.querySelector('.JS-img');
+
+    HCImg.addEventListener('click',()=>{
+      JSImg.classList.add('hidden');
+      console.log(JSImg);
+    })
+
+    /*
+    作品集思路
+    一、呈現方式
+    1.點擊某類別，其他類別隱藏，並跳出返回鈕，點擊返回鈕時全部顯示
+    2.跳出該類別最完整的三個小專案(卡片形式-圖(點圖可跳到預覽頁)、文字標題、文字簡述、程式碼連結)與其他項目（共四個）
+    3.練習軌跡擬以輪播練習圖在某處
+    
+    二、待確認
+    1.是否需個人履歷?
+    2.用多個HTML或一個HTML(show/hidden)
+    3.
+    */
+  </script>
+</html>
